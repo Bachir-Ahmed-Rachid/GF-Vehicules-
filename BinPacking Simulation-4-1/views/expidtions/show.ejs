@@ -1,0 +1,65 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Detaile de l'expidition</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Detaile de l'expidition</li>
+</ol>
+<div class="d-flex flex-column container-fluid bd-highlight">
+    <h6 class="mt-4">Emplacement vehicules sur carte</h6>
+    <tr>
+        <div id='map2' style='width: 100%; height: 500px;'></div>
+        <div style='width: 100%;'>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Date:<%= expidtion.date %>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Indice</th>
+                                <th>Imatricultion</th>
+                                <th>Details</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Indice</th>
+                                <th>Imatricultion</th>
+                                <th>Details</th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for(let vehcule of expidtion.vehcules){ %>
+                                <tr>
+                                    <td><%= vehcule._id %>
+                                    </td>
+                                    <td><%= vehcule.index %>
+                                    </td>
+                                    <td><%= vehcule.imatricultion %>
+                                    </td>
+                                    <td>
+                                        <a href='/VehiculesActif/<%=vehcule._id%>'>Details</a>
+                                    </td>
+
+
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <a class="btn btn-outline-primary btn-sm" href="/expidtions">Retour</a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const vehcules = '<%-JSON.stringify(expidtion.vehcules)%>'
+    </script>
+    <script src="/javascript/showExpidtionMap.js"></script>

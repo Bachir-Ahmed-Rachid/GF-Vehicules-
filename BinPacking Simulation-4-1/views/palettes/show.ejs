@@ -1,0 +1,58 @@
+<% layout('layouts/boilerplate') -%>
+<h2 class="mt-4">Palettes a la Sortie de le Ville
+</h2>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <div>
+            <i class="fa-solid fa-city"></i>
+            Ville:<%= routing %></div>
+        <hr>
+            <div>
+                <i class="fas fa-table me-1"></i>
+                Nombre de palette a la sortie:<%=palette.length%>
+                Palettes</div>
+
+        </div>
+
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>N°Palette</th>
+                        <th>Ville(Dilevery/Pickup)</th>
+                        <th>Type de la palette Dilevery/Pickup</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>N°Palette</th>
+                        <th>Ville(Dilevery/Pickup)</th>
+                        <th>Type de la palette Dilevery/Pickup</th>
+
+
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <% for(let item of palette){ %>
+                        <tr>
+                            <td><%= item%></td>
+                            <td><%= item.split('_')[2] %><%= item.split('_')[3] %>
+                            </td>
+                            <td><%= item.split('_')[0] %>
+                            </td>
+                            <td><%= item.split('_')[1]=='D'?'Dilvery':'Pickup'%>
+                            </td>
+
+
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary btn-sm" href="/VehiculesActif/<%= vehicule._id %>">Retour</a>
+    </div>

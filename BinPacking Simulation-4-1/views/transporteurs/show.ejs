@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Detaile du Transporteur</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Detaile du Transporteur</li>
+</ol>
+<div class="row">
+    <div class="col-4">
+        <div class="card">
+            <img src=<%=transporteur.photo%>>
+                <div class="card-body">
+                    <h5 class="card-title"><%= transporteur.nom %></h5>
+                    <h6 class="card-title"><%= transporteur.prenom %></h6>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                    <a class="btn btn-outline-primary btn-sm" href="/transporteurs">Retour</a>
+                    <div>
+                        <a class="btn btn-outline-success btn-sm" href="/transporteurs/<%= transporteur._id %>/edit">Modifier</a>
+                        <form class="d-inline" action="/transporteurs/<%= transporteur._id %>?_method=DELETE" method="post">
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Supprimer</button>
+                        </form>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="col-6"></div>
+    </div>

@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Modifier transporteur</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Modifier transporteur</li>
+</ol>
+<div class="row">
+    <div class="col-6">
+        <form action="/transporteurs/<%= transporteur._id %>?_method=PUT" method="post" class="needs-validation" novalidate="novalidate">
+            <div class="mb-3">
+                <label class="form-label" for="nom">Nom:</label>
+                <input class="form-control" type="text" id="nom" name="transporteur[nom]" value=<%=transporteur.nom%> required="required">
+                    <div class="invalid-feedback">
+                        Saisissez le nom du transporteur.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="prenom">Prenom:</label>
+                    <input class="form-control" type="text" id="prenom" name="transporteur[prenom]" value=<%=transporteur.prenom%> required="required">
+                        <div class="invalid-feedback">
+                            Saisissez le prenom du transporteur.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="photo">Photo:</label>
+                        <input class="form-control" type="text" id="photo" name="transporteur[photo]" value=<%=transporteur.photo%> required="required">
+                            <div class="invalid-feedback">
+                                Saisissez la photo du transporteur.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="TypePermis">Type de Permis:</label>
+                            <input class="form-control" type="text" id="TypePermis" name="transporteur[TypePermis]" value=<%=transporteur.TypePermis%> required="required">
+                                <div class="invalid-feedback">
+                                    Saisissez le type du permis.
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <a class="btn btn-primary" href="/transporteurs/<%=transporteur._id%>">Retour</a>
+                                <button class="btn btn-success" type="submit">Modifier</button>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>

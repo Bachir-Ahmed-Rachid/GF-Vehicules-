@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Confirmer l'expidition</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Assoscier les transporteurs et les vehicules</li>
+</ol>
+<div class="container-fluid bd-highlight mt-4">
+    <div style='width: 100%;'>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Trajets calculer
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Cout approximatif</th>
+                            <th>Routiong</th>
+                            <th>Choix du tranporteur/Vehicule</th>
+
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Type</th>
+                            <th>Cout approximatif</th>
+                            <th>Routing</th>
+                            <th>Choix du Tranporteur/Vehicule</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <% for(let Veh of result.vehcule){ %>
+                            <tr>
+                                <td>Type_<%= Veh.capacite%>
+                                    Tonnes</td>
+                                <td><%= Veh.cost%>dzd/km</td>
+                                <td><%= Veh.routing %></td>
+                                <td>
+
+                                    <select class="cost-block" aria-label="Default select example">
+                                        <option selected="selected">Choisire un transporteur disponible</option>
+                                        <% for(let transpo of transporteur){ %>
+                                            <option value="<%= transpo.nom %>"><%= transpo.nom %>
+                                            </option>
+                                        <% } %>
+                                    </select>
+                                    <select class="cost-block" aria-label="Default select example">
+                                        <option selected="selected">Choisire un vehicule disponible</option>
+                                        <% for(let veh of vehcule){ %>
+                                            <% if(veh.capacite>=Veh.capacite){ %>
+                                                <option value="<%= veh.index %>"><%= veh.index %>
+                                                </option>
+                                            <% } %>
+
+                                        <% } %>
+                                    </select>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <div>
+            <a class="btn btn-outline-secondary btn-sm" href="/expidtions/new">Annuler</a>
+        </div>
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-outline-primary btn-sm" id='btn'>Confirmer</button>
+            <form id="final" method="POST" class="needs-validation" novalidate="novalidate">
+                <div>
+                    <button class="btn btn-outline-success btn-sm" type="submit">Terminer</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<script>
+    const vehicules = '<%-JSON.stringify(result)%>'
+    const demande = '<%-JSON.stringify(Jinput)%>'
+</script>
+<script src="/javascript/confirmeExpidtion.js"></script>

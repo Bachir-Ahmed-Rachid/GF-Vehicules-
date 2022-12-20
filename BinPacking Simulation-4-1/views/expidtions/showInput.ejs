@@ -1,0 +1,84 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Tables des parametres</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Tables des parametres</li>
+</ol>
+<div class="row mt-3">
+    <div class="col-6">
+        <div style='width: 100%;'>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    Table de clients
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Clients</th>
+                                <th>Quantite a livrer</th>
+                                <th>Quantite a ramasser</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Clients</th>
+                                <th>Quantite a livrer</th>
+                                <th>Quantite a ramasser</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for(let cutomer of inputs.Demande){ %>
+                                <tr>
+                                    <td><%= cutomer.Customer%>
+                                    </td>
+                                    <td><%= cutomer.Dilevery %></td>
+                                    <td><%= cutomer.Pickup %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Table de Vehicules a utiliser
+            </div>
+            <div style='width: 100%;'>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Vehicules</th>
+                                <th>Capacite</th>
+                                <th>cout approximatif
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let vehicule of inputs.Fleet){ %>
+                                <tr>
+                                    <td><%= vehicule.Vehicules%>
+                                    </td>
+                                    <td><%= vehicule.Capacity %></td>
+                                    <td><%= vehicule.Cost %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/calculate/<%= data %>" method="GET" class="needs-validation" novalidate="novalidate">
+    <div class="d-flex justify-content-between  mb-3">
+        <a class="btn btn-outline-primary" href="/expidtions/new">Retour</a>
+        <button id="button" class="btn btn-outline-success" type="submit">Suivant</button>
+    </div>
+</form>

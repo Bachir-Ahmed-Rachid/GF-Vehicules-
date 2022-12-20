@@ -1,0 +1,108 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Detailes du Vehicules</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Detailes du Vehicules</li>
+</ol>
+<div class="row m-3">
+    <div class="col-4">
+        <div class="card">
+            <img style="height: 100%;width: 100%;" src='<%=vehcule.image%>' alt="">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tbody>
+
+                            <tr>
+                                <th scope="col">Discreption</td>
+                                <td scope="col"><%= vehcule.discreption %></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">Poids maximum</td>
+                                <td scope="col"><%= vehcule.poidMaximum %>
+                                    Tonnes</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="col">Dimension maximum:</td>
+                                <td scope="col"><%= vehcule.dimentionMaximum %>m3</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Cout approximatif</td>
+                                <td scope="col"><%= vehcule.cost %>
+                                    dzd/km</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Type</td>
+                                <td scope="col"><%= vehcule.type %></td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                    <a class="btn btn-outline-primary btn-sm" href="/vehcules">Retour</a>
+                    <div>
+                        <a class="btn btn-outline-success btn-sm" href="/vehcules/<%= vehcule._id %>/edit">Modifier</a>
+                        <form class="d-inline" action="/vehcules/<%= vehcule._id %>?_method=DELETE" method="post">
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Supprimer</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div>
+                        <i class="fa-solid fa-truck-moving"></i>
+                        Liste des Vehicules</div>
+                </div>
+
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Indice</th>
+                                <th>Imatricultion</th>
+                                <th>Details</th>
+
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Id</th>
+                                <th>Indice</th>
+                                <th>Imatricultion</th>
+                                <th>Details</th>
+
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <% for(let veh of vehcule.vehcules){ %>
+                                <tr>
+                                    <td><%= veh._id %>
+                                    </td>
+                                    <td><%= veh.index %></td>
+                                    <td><%= veh.imatricultion %></td>
+                                    <td>
+                                        <a class="btn btn-outline-secondary btn-sm" href="/vehcules/<%= vehcule._id %>/groupeVehules/<%= veh._id %>">Afficher</a>
+                                    </td>
+
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-center">
+                        <a class="btn btn-success btn-sm" href="/vehcules/<%= vehcule._id %>/groupeVehules/new">
+                            <i class="fa-solid fa-plus"></i>Ajouter
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

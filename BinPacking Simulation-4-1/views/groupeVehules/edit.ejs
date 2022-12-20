@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Modifier Vehicule</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Modifier Vehicules</li>
+</ol>
+<div class="row">
+    <div class="col-6">
+        <form action="/vehcules/<%= vehcule._id %>/groupeVehules/<%= groupeVehcule._id %>?_method=PUT" method="post" class="needs-validation" novalidate="novalidate">
+            <div class="mb-3">
+                <label class="form-label" for="image">Imatricultion:</label>
+                <input class="form-control" type="text" id="image" name="groupeVehcule[imatricultion]" required="required" value="<%= groupeVehcule.imatricultion %>">
+                    <div class="invalid-feedback">
+                        Saisissez l'Imatricultion du vehicule.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="image">Photo:</label>
+                    <input class="form-control" type="text" id="image" name="groupeVehcule[image]" required="required" value="<%= groupeVehcule.image %>">
+                        <div class="invalid-feedback">
+                            Saisissez la photo du vehicule.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="image">
+                            Indice:</label>
+                        <input class="form-control" type="text" id="image" name="groupeVehcule[index]" required="required" value="<%= groupeVehcule.index %>">
+                            <div class="invalid-feedback">
+                                Saisissez l'Indice du vehicule.
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <a class="btn btn-outline-primary btn-sm" href="/vehcules/<%= vehcule._id %>">Retour</a>
+                            <button class="btn btn-outline-success btn-sm" type="submit">Modifier</button>
+                        </div>
+
+                    </form>
+                </form>
+            </div>
+        </div>

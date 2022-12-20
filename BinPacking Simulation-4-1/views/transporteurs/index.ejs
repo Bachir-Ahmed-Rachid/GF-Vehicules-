@@ -1,0 +1,28 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Transporteurs</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Transporteurs</li>
+</ol>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% for(let transporteur of transporteurs){ %>
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src=<%=transporteur.photo%> class="img-fluid rounded-start" alt="..."></div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= transporteur.nom %>
+                                <%= transporteur.prenom %></h5>
+                            <p class="card-text">Permis:
+                                <%=transporteur.TypePermis%></p>
+                            <a class="btn btn-outline-primary btn-sm" href=<%=`/transporteurs/${transporteur._id}`%>>Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% } %>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary btn-sm" href="/">Retour</a>
+    </div>

@@ -1,0 +1,39 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Detailes du Vehicules</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Detailes du Vehicules><%=groupeVehcule.index%></li>
+</ol>
+<div class="row m-3">
+    <div class="col-4">
+        <div class="card">
+            <img style="height: 100%;width: 100%;" src='<%=groupeVehcule.image%>' alt="">
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="col">Indice</td>
+                                <td scope="col"><%= groupeVehcule.index %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Imatricultion</td>
+                                <td scope="col"><%= groupeVehcule.imatricultion %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                    <a class="btn btn-outline-primary btn-sm" href="/vehcules/<%= vehcule._id %>">Retour</a>
+                    <div>
+                        <a class="btn btn-outline-success btn-sm" href="/vehcules/<%= vehcule._id %>/groupeVehules/<%= groupeVehcule._id %>/edit">Modifier</a>
+                        <form class="d-inline" action="/vehcules/<%= vehcule._id %>/groupeVehules/<%= groupeVehcule._id %>?_method=DELETE" method="post">
+                            <button class="btn btn-outline-danger btn-sm" type="submit">Supprimer</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>

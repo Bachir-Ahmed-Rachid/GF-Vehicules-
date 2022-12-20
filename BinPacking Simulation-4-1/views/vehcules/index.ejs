@@ -1,0 +1,33 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Vehicules</h1>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Vehicules</li>
+</ol>
+<div class="row row-cols-3 row-cols-md-3 g-4 mt-4">
+    <% for(let vehcule of vehcules){%>
+        <div class="col">
+            <div class="card h-100">
+                <img src=<%=vehcule.image%> style="height:100%;" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Discreption:
+                            <%= vehcule.discreption %></h5>
+                        <h6 class="card-title">Poids maximum:
+                            <%= vehcule.poidMaximum %>
+                            Tonnes</h6>
+                        <h6 class="card-title">Dimension maximum:
+                            <%= vehcule.dimentionMaximum %>m3</h6>
+                        <h6 class="card-title">Type:
+                            <%= vehcule.type %></h6>
+                        <div>
+                            <a class="btn btn-outline-secondary btn-sm" href=<%=`/vehcules/${vehcule._id}`%>>Details</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        <%} %>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary btn-sm" href="/">Retour</a>
+    </div>

@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Charts</h1>
+<div class="row">
+    <% for(let custometr of customerCharts ){%>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-secondary text-white mb-4">
+                <div class="card-body"><%=custometr.Customer%></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <% if(custometr.Customer==='Alger') {%>
+                        <h6>Depot</h6>
+                    <% }else{ %>
+                        <a class="small text-white stretched-link" href="/customerCharts/<%=custometr._id%>">Charts</a>
+                        <div class="small text-white">
+                            <i class="fas fa-angle-right"></i>
+                        </div>
+                    <%} %>
+
+                </div>
+            </div>
+        </div>
+    <%} %>
+</div>
+<div class="d-flex justify-content-start">
+    <a class="btn btn-outline-primary btn-sm" href="/">Retour</a>
+</div>

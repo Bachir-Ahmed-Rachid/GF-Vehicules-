@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate') -%>
+<h1 class="mt-4">Expidtions</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Expidtions</li>
+</ol>
+<div class="container-fluid bd-highlight mt-4">
+    <div style='width: 100%;'>
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Table d'expiditions
+            </div>
+            <div class="card-body">
+                <table id="datatablesSimple">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>N°vehicules</th>
+                            <th>Details</th>
+                            <th>Etat</th>
+                            <th>Decision</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date</th>
+                            <th>N°vehicules</th>
+                            <th>Details</th>
+                            <th>Etat</th>
+                            <th>Decision</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <% for(let expidtion of expidtions){ %>
+                            <tr>
+                                <td><%= expidtion._id %>
+                                </td>
+                                <td><%= expidtion.date %></td>
+                                <td><%= expidtion.nomberVehicules %></td>
+                                <td>
+                                    <a class="btn btn-outline-primary btn-sm <%= expidtion.etat =='Terminer'?'disabled':'other'%>" href=<%=`/expidtions/${expidtion._id}`%>>Details</a>
+                                </td>
+                                <td><%= expidtion.etat %></td>
+                                <td>
+                                    <form class="d-inline" action="/expidtions/<%= expidtion._id %>?_method=DELETE" method="post">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm <%= expidtion.etat =='Terminer'?'disabled':'other'%>">Annuler</button>
+                                    </form>
+                                    <form class="d-inline" action="/expidtions/<%= expidtion._id %>?_method=PUT" method="post">
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Finaliser</button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <a class="btn btn-outline-primary btn-sm" href="/">Retour</a>
+    </div>
+</div>
